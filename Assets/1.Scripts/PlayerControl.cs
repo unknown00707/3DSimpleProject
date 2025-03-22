@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     bool isD;
     bool isLeftArrow;
     bool isRightArrow;
+    public bool isAttack;
 
     void Update()
     {
@@ -47,6 +49,7 @@ public class PlayerControl : MonoBehaviour
         isD = Input.GetKeyDown(KeyCode.D);
         isLeftArrow = Input.GetKeyDown(KeyCode.LeftArrow);
         isRightArrow = Input.GetKeyDown(KeyCode.RightArrow);
+        isAttack = (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) ? true : false;
     }
 
 }
