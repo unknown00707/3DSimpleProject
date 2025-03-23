@@ -20,7 +20,7 @@ public class AttackArea : MonoBehaviour
             {
                 enemyBullet.isAttacked = true;
                 enemyBullet.rigid.linearVelocity = Vector3.zero;
-                enemyBullet.speed *= Random.Range(1, 1.5f);
+                enemyBullet.speed *= Random.Range(0.1f, 0.5f);
             }
             
         }

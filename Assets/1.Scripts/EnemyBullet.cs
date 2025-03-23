@@ -58,6 +58,7 @@ public class EnemyBullet : MonoBehaviour
     void OnEnable()
     {
         isAttacked = false;
+        speed = 30f;
         transform.position = Vector3.zero;
         rigid.linearVelocity = Vector3.zero;
         startPos = spwanManager.StartPos();
