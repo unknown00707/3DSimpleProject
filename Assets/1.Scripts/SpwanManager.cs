@@ -13,7 +13,7 @@ public class SpwanManager : MonoBehaviour
 
     public Vector3 StartPos()
     {
-        int ran = Random.Range(0, 3);
+        int ran = Random.Range(0, pos.Length);
         return pos[ran];
     }
 

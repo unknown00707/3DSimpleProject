@@ -21,12 +21,6 @@ public class PoolManager : MonoBehaviour
         BasicSet();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     void BasicSet()
     {
         foreach (GameObject prefab in objectToPool)
