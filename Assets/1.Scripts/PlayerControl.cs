@@ -9,18 +9,19 @@ public class PlayerControl : MonoBehaviour
 
     Vector3 plusVec = new Vector3 (2, 0, 0);
 
-    int moveValue = 1;
-    float castingTime = 3f;
+    protected int moveValue = 1;
+    public float reCastingTime = 0f; // 궁극기 회전 시간
+    protected float castingTime = 3f; // 궁극기 시전 시간
 
     bool isA;
     bool isD;
     bool isLeftArrow;
     bool isRightArrow;
-    bool isSpace;
+    public bool isSpace;
 
     public bool isAttack;
-    public bool isAttackHolding;
-    public bool isUltimate;
+    public bool isAttackHolding; // 궁극기 조건 
+    public bool isUltimate; // 궁극기
 
     float arrow;
 
@@ -56,12 +57,17 @@ public class PlayerControl : MonoBehaviour
         isD = Input.GetKey(KeyCode.D);
         isLeftArrow = Input.GetKey(KeyCode.LeftArrow);
         isRightArrow = Input.GetKey(KeyCode.RightArrow);
-        isSpace = Input.GetKeyDown(KeyCode.Space);
-
-        if(!isUltimate)
-            isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey;
+        isSpace = Input.GetKey(KeyCode.Space);
 
         isUltimate = isSpace && isAttackHolding;
+
+        if (!isUltimate)
+            isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey;
+        
+        if (reCastingTime > 0f)
+            reCastingTime -= Time.deltaTime;
+        else if (reCastingTime <= 0f)
+            reCastingTime = 0f;
     }
 
     void OnMove(InputValue inputValue)
@@ -72,7 +78,8 @@ public class PlayerControl : MonoBehaviour
 
     void OnLastAttack()
     {
-        StartCoroutine(RecastS());
+        if (reCastingTime == 0f)
+            StartCoroutine(RecastS());
     }
 
     public void Ultimate()
@@ -90,6 +97,8 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(castingTime);
 
         isAttackHolding = false;
+
+        reCastingTime = 20f;
     }
 
 }
