@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private float horizontalValue;
-
     Vector3 plusVec = new Vector3 (2, 0, 0);
 
     protected int moveValue = 1;
@@ -22,14 +20,15 @@ public class PlayerControl : MonoBehaviour
     public bool isAttack;
     public bool isAttackHolding; // 궁극기 조건 
     public bool isUltimate; // 궁극기
+    public bool isCharging;
 
     float arrow;
 
     void Update()
     {
         Move(arrow);
-        Ultimate();
         Chliking();
+        Ultimate();
     }
 
     void Move(float arrow)
@@ -62,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         isUltimate = isSpace && isAttackHolding;
 
         if (!isUltimate)
-            isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey;
+            isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey; // 개선 필요 : 움직일 때 공격 불가 ==> 움직여도 공격 o . ad화살표 등 으로 공격이 활성화 x
         
         if (reCastingTime > 0f)
             reCastingTime -= Time.deltaTime;
@@ -70,16 +69,30 @@ public class PlayerControl : MonoBehaviour
             reCastingTime = 0f;
     }
 
-    void OnMove(InputValue inputValue)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 arrowVec = inputValue.Get<Vector2>();
+        Vector2 arrowVec = context.ReadValue<Vector2>();
         arrow = arrowVec.x;
     }
 
-    void OnLastAttack()
+    public void OnLastAttack(InputAction.CallbackContext context)
     {
-        if (reCastingTime == 0f)
-            StartCoroutine(RecastS());
+        if (context.started)
+        {
+            isCharging = true;
+            Debug.Log("차징 시작");
+        }
+        else if (context.performed)
+        {
+            if (reCastingTime == 0f)
+                StartCoroutine(RecastS());
+        }
+        else if (context.canceled)
+        {
+            isCharging = false;
+            Debug.Log("차징 실패");
+        }
+        
     }
 
     public void Ultimate()
@@ -87,17 +100,21 @@ public class PlayerControl : MonoBehaviour
         if (isUltimate)
         {   
             isAttack = true;
+            //Debug.Log("궁극기 시전!!!");
         }
     }
+
 
     IEnumerator RecastS()
     {
         isAttackHolding = true;
+        Debug.Log("차징 끝");
 
         yield return new WaitForSeconds(castingTime);
 
         isAttackHolding = false;
-
+        isCharging = false;
+        Debug.Log("궁극기 끝");
         reCastingTime = 20f;
     }
 

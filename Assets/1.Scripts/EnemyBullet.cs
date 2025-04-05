@@ -25,11 +25,15 @@ public class EnemyBullet : EnemyCommon
         return new Vector3(ranX, ranY, ranZ);
     }
 
-
-
-
     void OnEnable()
     {
+        transform.position = Vector3.zero;
+        rigid.linearVelocity = Vector3.zero;
+        if (spwanManager != null)
+        {
+            Vector3 startPos = spwanManager.StartPos();
+            gameObject.transform.position = startPos;
+        }
         isAttacked = false;
         speed = 30f;
     }

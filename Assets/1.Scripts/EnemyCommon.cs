@@ -45,7 +45,10 @@ public class EnemyCommon : MonoBehaviour
     {
         transform.position = Vector3.zero;
         rigid.linearVelocity = Vector3.zero;
-        startPos = spwanManager.StartPos();
-        gameObject.transform.position = startPos;
+        if (spwanManager != null)
+        {
+            startPos = spwanManager.StartPos();
+            gameObject.transform.position = startPos;
+        }
     }
 }

@@ -5,44 +5,61 @@ public class CastBar : MonoBehaviour
 {
 
     public PlayerControl player;
-    public GameObject CastBarGroup;
     public Image castIMG;
+    public GameObject[] childGameObjs;
 
     float culTime = 0f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (player.reCastingTime == 0)
-        {
-            gameObject.SetActive(true);     
+        CulChargingBarSize();
+        TimingOfBar();
+    }
 
-            if (player.isAttackHolding == true)
-                culTime -= Time.deltaTime;
-            else
-                culTime += Time.deltaTime;
-            
-            float culTimeTotal = culTime/0.5f;
-                
-            if(culTimeTotal >= 1)
-            {
-                culTime = 0.5f;
-                culTimeTotal = 1;
-            }      
-            else if (culTimeTotal <= 0)
-            {
-                culTime = 0;
-                culTimeTotal = 0;
-            }
-                    
-                
-            castIMG.transform.localScale = new Vector2(culTimeTotal, 1);
+    void CulChargingBarSize()
+    {
+        if (player.isCharging && player.isAttackHolding)
+        {
+            //gameObject.SetActive(true);     
+            culTime += Time.deltaTime;
+        }
+        else if (!player.isCharging)
+        {
+            //gameObject.SetActive(false); 
+            culTime -= Time.deltaTime;
         }    
+        
+        float culTimeTotal = culTime/0.5f;
+        
+        if(culTimeTotal >= 1)
+        {
+            culTime = 0.5f;
+            culTimeTotal = 1;
+        }      
+        else if (culTimeTotal <= 0)
+        {
+            culTime = 0;
+            culTimeTotal = 0;
+        }
+        castIMG.transform.localScale = new Vector2(culTimeTotal, 1);
+    }
+
+    void TimingOfBar()
+    {
+        if(player.isSpace)
+        {
+            foreach (GameObject obj in childGameObjs)
+            {
+                obj.SetActive(true);
+            }
+        }
+        else if (castIMG.transform.localScale.x == 0)
+        {
+            foreach (GameObject obj in childGameObjs)
+            {
+                obj.SetActive(false);
+            }
+        }
     }
 }
