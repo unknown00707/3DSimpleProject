@@ -21,12 +21,6 @@ public class PoolManager : MonoBehaviour
         BasicSet();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     void BasicSet()
     {
         foreach (GameObject prefab in objectToPool)
@@ -34,13 +28,18 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < amountToPool; i++)
             {
                 GameObject obj = (GameObject)Instantiate(prefab);
-                obj.SetActive(false);
 
                 if(obj.CompareTag("Enemy"))
+                {
+                    obj.GetComponent<EnemyControl>().spwanManager = FindAnyObjectByType<SpwanManager>();
                     pooledEnemy.Add(obj);
+                }
                 if(obj.CompareTag("EnemyBullet"))
+                {
+                    obj.GetComponent<EnemyBullet>().spwanManager = FindAnyObjectByType<SpwanManager>();
                     pooledEnemyBullet.Add(obj);
-
+                }
+                obj.SetActive(false);
                 obj.transform.SetParent(spwanManager.gameObject.transform); // set as children of Spawn Manager
             }
         }

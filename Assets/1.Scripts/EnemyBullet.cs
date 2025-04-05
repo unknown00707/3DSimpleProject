@@ -1,20 +1,8 @@
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : EnemyCommon
 {
-    public float speed;
-    public Rigidbody rigid;
     public bool isAttacked = false;
-
-    Vector3 startPos;
-
-    public SpwanManager spwanManager;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        rigid = GetComponent<Rigidbody>();
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -25,11 +13,6 @@ public class EnemyBullet : MonoBehaviour
         {
             rigid.AddForce(RandomVec() * speed * Time.deltaTime, ForceMode.Impulse);
             Invoke("Die", 3);
-        }
-        
-        if(transform.position.z < -150)
-        {
-            Die();
         }
     }
 
@@ -42,27 +25,17 @@ public class EnemyBullet : MonoBehaviour
         return new Vector3(ranX, ranY, ranZ);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    {
-        gameObject.SetActive(false);
-    }
-
     void OnEnable()
     {
-        isAttacked = false;
-        speed = 30f;
         transform.position = Vector3.zero;
         rigid.linearVelocity = Vector3.zero;
-        startPos = spwanManager.StartPos();
-        gameObject.transform.position = startPos;
+        if (spwanManager != null)
+        {
+            Vector3 startPos = spwanManager.StartPos();
+            gameObject.transform.position = startPos;
+        }
+        isAttacked = false;
+        speed = 30f;
     }
 
 }
