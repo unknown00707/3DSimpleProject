@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemyControl : EnemyCommon
 {
+    public int damage;
+    
     // Update is called once per frame
     void FixedUpdate()
     {

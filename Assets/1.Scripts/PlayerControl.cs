@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     Vector3 plusVec = new Vector3 (2, 0, 0);
 
+    public int health;
     protected int moveValue = 1;
     public float reCastingTime = 0f; // 궁극기 회전 시간
     protected float castingTime = 3f; // 궁극기 시전 시간
@@ -116,6 +117,26 @@ public class PlayerControl : MonoBehaviour
         isCharging = false;
         Debug.Log("궁극기 끝");
         reCastingTime = 20f;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            EnemyControl enemy = other.gameObject.GetComponent<EnemyControl>();
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+
+            health -= enemy.damage;
+            scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
+        }
+        else if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            EnemyBullet enemyBullet = other.gameObject.GetComponent<EnemyBullet>();
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+
+            health -= enemyBullet.damage;
+            scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
+        }
     }
 
 }

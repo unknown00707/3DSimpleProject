@@ -154,4 +154,6 @@ MonoBehaviour:
   speed: 30
   spwanManager: {fileID: 0}
   rigid: {fileID: 7453071228656609197}
+  hitCode: 50
   isAttacked: 0
+  damage: 20

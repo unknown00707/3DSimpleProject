@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBullet : EnemyCommon
 {
     public bool isAttacked = false;
+    public int damage;
 
     // Update is called once per frame
     void FixedUpdate()

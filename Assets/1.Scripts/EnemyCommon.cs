@@ -5,6 +5,8 @@ public class EnemyCommon : MonoBehaviour
     public float speed;
     public SpwanManager spwanManager;
     public Rigidbody rigid;
+
+    public int hitCode;
     
     Vector3 startPos;
 
@@ -14,16 +16,12 @@ public class EnemyCommon : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
-        if(transform.position.z < -150)
+        if(transform.position.z < -7)
         {
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
             Die();
         }
     }
