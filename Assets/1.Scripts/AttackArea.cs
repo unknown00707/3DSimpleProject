@@ -12,22 +12,30 @@ public class AttackArea : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && player.isAttack)
         {
-            hitedCode = other.GetComponent<EnemyControl>().hitCode;
+            EnemyControl enemy = other.GetComponent<EnemyControl>();
+            enemy.collider.enabled = false;
+
+            hitedCode = enemy.hitCode;
             scoreManager.ScoreGiven(hitedCode * conditionNum );
-            other.gameObject.SetActive(false);
+            print("HitPoint");
+            
+            enemy.EnemySetBasic(true);
         }
 
         if (other.CompareTag("EnemyBullet") && player.isAttack)
         {
             EnemyBullet enemyBullet = other.GetComponent<EnemyBullet>();
+            enemyBullet.collider.enabled = false;
+
             hitedCode = enemyBullet.hitCode;
             scoreManager.ScoreGiven(hitedCode * conditionNum );
+            print("HitPoint");
+
 
             if(enemyBullet.isAttacked != true)
             {
                 enemyBullet.isAttacked = true;
-                enemyBullet.rigid.linearVelocity = Vector3.zero;
-                enemyBullet.speed *= Random.Range(0.1f, 0.5f);
+                enemyBullet.speed *= Random.Range(1f, 1.5f);
             }
             
         }

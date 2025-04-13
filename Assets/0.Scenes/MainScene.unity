@@ -274,8 +274,8 @@ MonoBehaviour:
   pooledEnemy: []
   pooledEnemyBullet: []
   objectToPool:
-  - {fileID: 2497506409747589022, guid: 5a1fd18bcff43704f9e8968638564442, type: 3}
-  - {fileID: 9179383299256502546, guid: ef587e88e07d94542becdfc66b8c09c3, type: 3}
+  - {fileID: 1474187113892430599, guid: d6949da2ae94b9f478176942b3aa7300, type: 3}
+  - {fileID: 1682470437068595579, guid: 142cb1f8a4515894db0e0270ba9bb8ee, type: 3}
   amountToPool: 50
   spwanManager: {fileID: 1908381895}
 --- !u!1 &274771669
@@ -2782,8 +2782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolManager: {fileID: 270012104}
   pos:
-  - {x: 1, y: 1.77, z: 200}
-  - {x: -1, y: 1.77, z: 200}
+  - {x: 1, y: 0, z: 200}
+  - {x: -1, y: 0, z: 200}
 --- !u!1 &1989720517
 GameObject:
   m_ObjectHideFlags: 0

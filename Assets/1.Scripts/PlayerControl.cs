@@ -126,16 +126,31 @@ public class PlayerControl : MonoBehaviour
             EnemyControl enemy = other.gameObject.GetComponent<EnemyControl>();
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
 
-            health -= enemy.damage;
-            scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
+            if(enemy.collider.enabled == true)
+            {
+                enemy.collider.enabled = false;
+                enemy.EnemySetBasic(true);
+
+                health -= enemy.damage;
+                scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
+                print("PlayerHitPoint");
+            }
+            
         }
         else if (other.gameObject.CompareTag("EnemyBullet"))
         {
             EnemyBullet enemyBullet = other.gameObject.GetComponent<EnemyBullet>();
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+            
+            if(enemyBullet.collider.enabled == true)
+            {
+                enemyBullet.collider.enabled = false;
+                enemyBullet.Die();
 
-            health -= enemyBullet.damage;
-            scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
+                health -= enemyBullet.damage;
+                scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
+                print("PlayerHitPoint");
+            }
         }
     }
 

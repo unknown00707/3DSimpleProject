@@ -39,7 +39,7 @@ public class PoolManager : MonoBehaviour
                     obj.GetComponent<EnemyBullet>().spwanManager = FindAnyObjectByType<SpwanManager>();
                     pooledEnemyBullet.Add(obj);
                 }
-                obj.SetActive(false);
+                obj.transform.GetChild(0).gameObject.SetActive(false);
                 obj.transform.SetParent(spwanManager.gameObject.transform); // set as children of Spawn Manager
             }
         }
@@ -55,7 +55,7 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < amountToPool; i++)
             {
                 // if the pooled objects is NOT active, return that object 
-                if (!pooledEnemy[i].activeInHierarchy)
+                if (!pooledEnemy[i].transform.GetChild(0).gameObject.activeInHierarchy)
                 {
                     gameObject = pooledEnemy[i];
                     return gameObject;
@@ -68,7 +68,7 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < amountToPool; i++)
             {
                 // if the pooled objects is NOT active, return that object 
-                if (!pooledEnemyBullet[i].activeInHierarchy)
+                if (!pooledEnemyBullet[i].transform.GetChild(0).gameObject.activeInHierarchy)
                 {
                     gameObject = pooledEnemyBullet[i];
                     return gameObject;
