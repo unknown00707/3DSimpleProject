@@ -28,21 +28,28 @@ public class SpwanManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
 
-            if(poolManager.GetPooledObject(false) != null)
-            {
+            
                 GameObject enemyBullet = poolManager.GetPooledObject(false);
-                enemyBullet.SetActive(true);
-            }
+                EnemyBullet enemyBulletS = enemyBullet.GetComponent<EnemyBullet>();
+
+                //enemyBulletS.OnSetBasicEnemey();
+                enemyBulletS.OnSetBasicEnemey();
+                enemyBulletS.OnEnemeyBulletSet();
+
+                enemyBullet.transform.GetChild(0).gameObject.SetActive(true);
+            
 
             yield return new WaitForSeconds(5f);
 
-            if(poolManager.GetPooledObject(true) != null)
-            {
+            
                 GameObject enemy = poolManager.GetPooledObject(true);
-                enemy.SetActive(true);
-            }
+                EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
 
-            }
+                enemyS.OnSetBasicEnemey();
+                enemyS.EnemySetBasic(false);
+        }
+
+            
         
     }
 }

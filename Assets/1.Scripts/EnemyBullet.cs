@@ -3,39 +3,31 @@ using UnityEngine;
 public class EnemyBullet : EnemyCommon
 {
     public bool isAttacked = false;
-
+    
     // Update is called once per frame
+    void Update()
+    {
+        if(isAttacked)
+        {
+            transform.position += RanVocter() * speed * Time.deltaTime;
+            Invoke("Die", 3);
+        }  
+    }
+
     void FixedUpdate()
     {
-        if(!isAttacked)
-            rigid.AddForce(Vector3.back * speed * Time.deltaTime, ForceMode.Impulse);
-        else
-        {
-            rigid.AddForce(RandomVec() * speed * Time.deltaTime, ForceMode.Impulse);
-            Invoke("Die", 3);
-        }
+        if(transform.GetChild(0).gameObject.activeInHierarchy && !isAttacked)
+            transform.position += speed * Time.deltaTime * Vector3.back;
     }
 
-    Vector3 RandomVec()
+    public void OnEnemeyBulletSet()
     {
-        float limtiRan = 320f;
-        float ranX = Random.Range(-limtiRan, limtiRan);
-        float ranY = Random.Range(0, limtiRan);
-        float ranZ = Random.Range(0, limtiRan);
-        return new Vector3(ranX, ranY, ranZ);
-    }
-
-    void OnEnable()
-    {
-        transform.position = Vector3.zero;
-        rigid.linearVelocity = Vector3.zero;
-        if (spwanManager != null)
-        {
-            Vector3 startPos = spwanManager.StartPos();
-            gameObject.transform.position = startPos;
-        }
         isAttacked = false;
         speed = 30f;
     }
 
+    Vector3 RanVocter()
+    {
+        return new Vector3 (Random.Range(-360f, 360f), Random.Range(1f, 30f), Random.Range(1f, 360f));
+    }
 }

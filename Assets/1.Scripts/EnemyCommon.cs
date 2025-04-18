@@ -1,54 +1,57 @@
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyCommon : MonoBehaviour
 {
     public float speed;
     public SpwanManager spwanManager;
-    public Rigidbody rigid;
+    public new Collider collider;
+
+    public int hitCode;
+
+    public int damage;
     
     Vector3 startPos;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rigid = GetComponent<Rigidbody>();
+        OnSetBasicEnemey();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void FixedUpdate()
     {
-        if(transform.position.z < -150)
+        if(transform.position.z < -7 && collider.enabled == true)
         {
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
+            print("DiePoint");
             Die();
+            OnSetBasicEnemey();
         }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        else if (transform.position.z < -7 && collider.enabled == false)
         {
             Die();
+            OnSetBasicEnemey();
         }
     }
 
     public void Die()
     {
-        gameObject.SetActive(false);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    void OnEnable()
+    public void OnSetBasicEnemey()
     {
         transform.position = Vector3.zero;
-        rigid.linearVelocity = Vector3.zero;
         if (spwanManager != null)
         {
             startPos = spwanManager.StartPos();
             gameObject.transform.position = startPos;
         }
+
+        collider.enabled = true;
     }
 }
