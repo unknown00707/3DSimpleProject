@@ -60,7 +60,7 @@ public class PlayerControl : MonoBehaviour
         isSpace = Input.GetKey(KeyCode.Space);
 
         isUltimate = isSpace && isAttackHolding;
-
+    
         if (!isUltimate)
             isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey; // 개선 필요 : 움직일 때 공격 불가 ==> 움직여도 공격 o . ad화살표 등 으로 공격이 활성화 x
         
@@ -132,7 +132,7 @@ public class PlayerControl : MonoBehaviour
                 enemy.EnemySetBasic(true);
 
                 health -= enemy.damage;
-                scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
+                //scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
                 print("PlayerHitPoint");
             }
             
@@ -148,7 +148,7 @@ public class PlayerControl : MonoBehaviour
                 enemyBullet.Die();
 
                 health -= enemyBullet.damage;
-                scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
+                //scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
                 print("PlayerHitPoint");
             }
         }

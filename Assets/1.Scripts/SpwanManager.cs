@@ -48,8 +48,5 @@ public class SpwanManager : MonoBehaviour
                 enemyS.OnSetBasicEnemey();
                 enemyS.EnemySetBasic(false);
         }
-
-            
-        
     }
 }

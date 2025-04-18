@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2456545182887253482}
   - component: {fileID: 455260407283891417}
   - component: {fileID: 3552300814670365507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -96,9 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da537eecf2bcfdf458bb2006745471cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 5
   spwanManager: {fileID: 0}
-  rigid: {fileID: 2456545182887253482}
   collider: {fileID: 455260407283891417}
   hitCode: 30
   damage: 10
@@ -113,7 +112,7 @@ GameObject:
   - component: {fileID: 8227982147026577206}
   - component: {fileID: 2843771899185638981}
   - component: {fileID: 4486487630729186195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -199,7 +198,7 @@ GameObject:
   - component: {fileID: 5970275508727100586}
   - component: {fileID: 6259518303193370173}
   - component: {fileID: 8743476121436142417}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
