@@ -38,7 +38,7 @@ public class PlayerControl : MonoBehaviour
         {
             if(isA || isLeftArrow)
             {
-                transform.position += -plusVec;
+                gameObject.transform.parent.position += -plusVec;
             }   
         }
             
@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
         {
             if(isD || isRightArrow)
             {
-                transform.position += plusVec;
+                gameObject.transform.parent.position += plusVec;
             }
         }
     }

@@ -1,0 +1,32 @@
+[
+    {
+        "time": 1.0,
+        "line": 0,
+        "type": "enemy"
+    },
+    {
+        "time": 2.5,
+        "line": 1,
+        "type": "bullet"
+    },
+    {
+        "time": 3.8,
+        "line": 0,
+        "type": "enemy"
+    },
+    {
+        "time": 5.0,
+        "line": 1,
+        "type": "bullet"
+    },
+    {
+        "time": 6.2,
+        "line": 0,
+        "type": "enemy"
+    },
+    {
+        "time": 7.5,
+        "line": 1,
+        "type": "bullet"
+    }
+]

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -40,5 +41,4 @@ public class AttackArea : MonoBehaviour
             }
         }
     }
-
 }

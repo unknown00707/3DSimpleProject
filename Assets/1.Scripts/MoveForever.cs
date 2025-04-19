@@ -12,18 +12,7 @@ public class MoveForever : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        if (gameObject.name == "Attack ARea")
-        {
-            Transform playerTs = FindAnyObjectByType<PlayerControl>().gameObject.transform;
-            Vector3 offect = new Vector3(0, -1.5f, 0);
-            transform.position = playerTs.position + offect;
-        }
-        else
-        {
-            transform.position += Vector3.back * speed * Time.deltaTime;
-        }
-
+        transform.position += Vector3.back * speed * Time.deltaTime;
     }
 
     void LateUpdate()
