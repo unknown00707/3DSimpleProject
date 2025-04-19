@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -12,24 +13,25 @@ public class AttackArea : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && player.isAttack)
         {
+            
             EnemyControl enemy = other.GetComponent<EnemyControl>();
             enemy.collider.enabled = false;
 
             hitedCode = enemy.hitCode;
             scoreManager.ScoreGiven(hitedCode * conditionNum );
-            print("HitPoint");
-            
-            enemy.EnemySetBasic(true);
+            print("HitPoint" + conditionNum);
+                
+            enemy.EnemySetBasic(true); 
         }
 
         if (other.CompareTag("EnemyBullet") && player.isAttack)
-        {
+        {   
             EnemyBullet enemyBullet = other.GetComponent<EnemyBullet>();
             enemyBullet.collider.enabled = false;
 
             hitedCode = enemyBullet.hitCode;
             scoreManager.ScoreGiven(hitedCode * conditionNum );
-            print("HitPoint");
+            print("HitPoint" + conditionNum);
 
 
             if(enemyBullet.isAttacked != true)
@@ -37,8 +39,6 @@ public class AttackArea : MonoBehaviour
                 enemyBullet.isAttacked = true;
                 enemyBullet.speed *= Random.Range(1f, 1.5f);
             }
-            
         }
     }
-
 }

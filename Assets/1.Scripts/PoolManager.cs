@@ -28,15 +28,15 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < amountToPool; i++)
             {
                 GameObject obj = (GameObject)Instantiate(prefab);
-
+                SpwanManager spwanManager = FindAnyObjectByType<SpwanManager>();
                 if(obj.CompareTag("Enemy"))
                 {
-                    obj.GetComponent<EnemyControl>().spwanManager = FindAnyObjectByType<SpwanManager>();
+                    obj.GetComponent<EnemyControl>().spwanManager = spwanManager;
                     pooledEnemy.Add(obj);
                 }
                 if(obj.CompareTag("EnemyBullet"))
                 {
-                    obj.GetComponent<EnemyBullet>().spwanManager = FindAnyObjectByType<SpwanManager>();
+                    obj.GetComponent<EnemyBullet>().spwanManager = spwanManager;
                     pooledEnemyBullet.Add(obj);
                 }
                 obj.transform.GetChild(0).gameObject.SetActive(false);

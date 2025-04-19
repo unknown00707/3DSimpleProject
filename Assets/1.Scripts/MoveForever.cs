@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class MoveForever : MonoBehaviour
@@ -12,7 +13,6 @@ public class MoveForever : MonoBehaviour
     void FixedUpdate()
     {
         transform.position += Vector3.back * speed * Time.deltaTime;
-        
     }
 
     void LateUpdate()

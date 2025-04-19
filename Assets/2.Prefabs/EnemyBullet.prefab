@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8218855480908349568}
   - component: {fileID: 9156702831223393804}
   - component: {fileID: 8902093323094576583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f597ed520244d04892b6c6421cc03c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 10
   spwanManager: {fileID: 0}
-  rigid: {fileID: 8218855480908349568}
   collider: {fileID: 9156702831223393804}
   hitCode: 50
   damage: 20
@@ -115,7 +114,7 @@ GameObject:
   - component: {fileID: 7196126648020254022}
   - component: {fileID: 69693558719777555}
   - component: {fileID: 3443096435197632325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy Bullet Body
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
