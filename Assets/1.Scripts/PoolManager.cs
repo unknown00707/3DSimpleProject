@@ -1,50 +1,83 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    public List<GameObject> pooledObjects;
+    public List<GameObject> pooledEnemy;
+    public List<GameObject> pooledEnemyBullet;
     public GameObject[] objectToPool;
     public int amountToPool;
 
+    public SpwanManager spwanManager;
+
     void Awake()
     {
-        pooledObjects = new List<GameObject>();
+        // Loop through list of pooled objects,deactivating them and adding them to the list 
+        pooledEnemy = new List<GameObject>();
+        pooledEnemyBullet = new List<GameObject>();
+
         BasicSet();
     }
 
     void BasicSet()
     {
-        SpwanManager spwanManager = FindAnyObjectByType<SpwanManager>(); // SpwanManager 찾기
-
         foreach (GameObject prefab in objectToPool)
         {
             for (int i = 0; i < amountToPool; i++)
             {
-                GameObject obj = Instantiate(prefab);
-
-                EnemyCommon common = obj.GetComponent<EnemyCommon>();
-                if (common != null)
+                GameObject obj = (GameObject)Instantiate(prefab);
+                SpwanManager spwanManager = FindAnyObjectByType<SpwanManager>();
+                if(obj.CompareTag("Enemy"))
                 {
-                    common.spwanManager = spwanManager; // EnemyCommon에 SpwanManager 할당
+                    obj.GetComponent<EnemyControl>().spwanManager = spwanManager;
+                    pooledEnemy.Add(obj);
                 }
-
+                if(obj.CompareTag("EnemyBullet"))
+                {
+                    obj.GetComponent<EnemyBullet>().spwanManager = spwanManager;
+                    pooledEnemyBullet.Add(obj);
+                }
                 obj.transform.GetChild(0).gameObject.SetActive(false);
-                obj.transform.SetParent(spwanManager.transform);
-                pooledObjects.Add(obj);
+                obj.transform.SetParent(spwanManager.gameObject.transform); // set as children of Spawn Manager
             }
         }
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(bool isEnemy)
     {
-        for (int i = 0; i < pooledObjects.Count; i++)
+        GameObject gameObject;
+
+        if(isEnemy)
         {
-            if (!pooledObjects[i].transform.GetChild(0).gameObject.activeInHierarchy)
+            // For as many objects as are in the pooledObjects list
+            for (int i = 0; i < amountToPool; i++)
             {
-                return pooledObjects[i];
+                // if the pooled objects is NOT active, return that object 
+                if (!pooledEnemy[i].transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    gameObject = pooledEnemy[i];
+                    return gameObject;
+                }
             }
         }
-        return null; // 모든 오브젝트가 활성화되어 있을 경우
+        else
+        {
+            // For as many objects as are in the pooledObjects list
+            for (int i = 0; i < amountToPool; i++)
+            {
+                // if the pooled objects is NOT active, return that object 
+                if (!pooledEnemyBullet[i].transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    gameObject = pooledEnemyBullet[i];
+                    return gameObject;
+                }
+            }
+        }
+        
+        
+        // otherwise, return null   
+        return null;
     }
 }

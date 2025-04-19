@@ -11,14 +11,15 @@ public class EnemyCommon : MonoBehaviour
     public int hitCode;
 
     public int damage;
-
+    
     Vector3 startPos;
 
-    // Start 함수에서 OnSetBasicEnemey 호출 제거
-    // void Start()
-    // {
-    //     OnSetBasicEnemey();
-    // }
+    void Start()
+    {
+        OnSetBasicEnemey();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void FixedUpdate()
     {
@@ -28,12 +29,12 @@ public class EnemyCommon : MonoBehaviour
             scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
             print("DiePoint");
             Die();
-            OnSetBasicEnemey(); // Die 후 재활용 시 초기화
+            OnSetBasicEnemey();
         }
         else if (transform.position.z < -7 && collider.enabled == false)
         {
             Die();
-            OnSetBasicEnemey(); // Die 후 재활용 시 초기화
+            OnSetBasicEnemey();
         }
     }
 
@@ -44,13 +45,13 @@ public class EnemyCommon : MonoBehaviour
 
     public void OnSetBasicEnemey()
     {
-        transform.position = Vector3.zero; // 기본 위치 초기화 (재활용 시)
+        transform.position = Vector3.zero;
         if (spwanManager != null)
         {
             startPos = spwanManager.StartPos();
-            // gameObject.transform.position = startPos; // SpwanManager에서 위치 설정하므로 제거
+            gameObject.transform.position = startPos;
         }
 
-        // collider.enabled = true; // SpwanManager에서 활성화
+        collider.enabled = true;
     }
 }
