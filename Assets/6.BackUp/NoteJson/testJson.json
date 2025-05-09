@@ -1,0 +1,17 @@
+{
+    "formatVersion": 1,
+    "meta": {
+        "title": "My First Song",
+        "artist": "Me",
+        "author": "Manual",
+        "bpm": 120,
+        "timeSignature": "4/4"
+    },
+    "objects": [
+        { "beat": 1, "subdivision": 0, "lane": 0, "type": "enemy" },
+        { "beat": 1, "subdivision": 2, "lane": 1, "type": "enemy" },
+        { "beat": 2, "subdivision": 0, "lane": 0, "type": "bullet" },
+        { "beat": 2, "subdivision": 4, "lane": 2, "type": "enemy" },
+        { "beat": 3, "subdivision": 0, "lane": 1, "type": "enemy" }
+    ]
+}

@@ -8,11 +8,12 @@ public class SpwanManager : MonoBehaviour
 {
     
     public PoolManager poolManager;
-
+    public MusicManager musicManager;
     public Vector3[] pos;
 
     public Vector3 StartPos()
     {
+        //초기 위치 설정
         int ran = Random.Range(0, pos.Length);
         return pos[ran];
     }
@@ -26,30 +27,31 @@ public class SpwanManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.5f);
+            // 반복 실행
+
+            // yield return new WaitForSeconds(0.5f);
 
             
-                GameObject enemyBullet = poolManager.GetPooledObject(false);
-                EnemyBullet enemyBulletS = enemyBullet.GetComponent<EnemyBullet>();
+            //     GameObject enemyBullet = poolManager.GetPooledObject(false);
+            //     EnemyBullet enemyBulletS = enemyBullet.GetComponent<EnemyBullet>();
 
-                //enemyBulletS.OnSetBasicEnemey();
-                enemyBulletS.OnSetBasicEnemey();
-                enemyBulletS.OnEnemeyBulletSet();
+            //     //enemyBulletS.OnSetBasicEnemey();
+            //     enemyBulletS.OnSetBasicEnemey();
+            //     enemyBulletS.OnEnemeyBulletSet();
 
-                enemyBullet.transform.GetChild(0).gameObject.SetActive(true);
+            //     enemyBullet.transform.GetChild(0).gameObject.SetActive(true);
             
-
-            yield return new WaitForSeconds(5f);
-
             
-                GameObject enemy = poolManager.GetPooledObject(true);
-                EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
-
-                enemyS.OnSetBasicEnemey();
-                enemyS.EnemySetBasic(false);
-        }
+            GameObject enemy = poolManager.GetPooledObject(true);
+            EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
 
             
+            enemyS.OnSetBasicEnemey();
+            enemyS.EnemySetBasic(false);
+            
+            yield return new WaitForSeconds(musicManager.bpm);
         
+        
+        }
     }
 }
