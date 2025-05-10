@@ -7,7 +7,7 @@ public class MetaData
     public string title;
     public string artist;
     public string author;
-    public float bpm;
+    public int bpm;
     public string timeSignature;
 
     public MetaData()
@@ -15,7 +15,7 @@ public class MetaData
         title = "Untitled Song";
         artist = "Unknown Artist";
         author = "User";
-        bpm = 120f;
+        bpm = 120;
         timeSignature = "4/4";
     }
 }

@@ -11,7 +11,9 @@ public class ScoreManager : MonoBehaviour
     public void ScoreGiven(int colScore)
     {
         score = colScore;
-        finialScore += score;
+
+        if(finialScore <= 0) finialScore = 0; finialScore += score;
+        
         scoreTxt.text = finialScore.ToString();
     }
 }

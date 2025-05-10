@@ -9,6 +9,8 @@ public class AttackArea : MonoBehaviour
 
     int hitedCode = 0;
 
+    public int hitCounts;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") && player.isAttack)
@@ -20,6 +22,7 @@ public class AttackArea : MonoBehaviour
             hitedCode = enemy.hitCode;
             scoreManager.ScoreGiven(hitedCode * conditionNum );
             print("HitPoint" + conditionNum);
+            hitCounts++;
                 
             enemy.EnemySetBasic(true); 
         }

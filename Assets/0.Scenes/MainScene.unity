@@ -397,6 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a645485556d3d7459b0f8c8bb5341b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bpm: 100
+  jsonFileName: testJson.json
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1535,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091822064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2cccbc1d8ab2cf47ba71e1d2b7abc41, type: 3}
   m_Name: 
@@ -1751,7 +1753,7 @@ Transform:
   m_GameObject: {fileID: 1228463681}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.296, z: 1.002}
+  m_LocalPosition: {x: 0, y: 1.296, z: 1.005}
   m_LocalScale: {x: 1.5, y: 1, z: 0.9903056}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1772,6 +1774,7 @@ MonoBehaviour:
   conditionNum: 4
   player: {fileID: 2057563899}
   scoreManager: {fileID: 408609208}
+  hitCounts: 0
 --- !u!1 &1232582786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1799,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232582786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2cccbc1d8ab2cf47ba71e1d2b7abc41, type: 3}
   m_Name: 
@@ -1850,7 +1853,7 @@ Transform:
   m_GameObject: {fileID: 1284746048}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.296, z: 3.41}
+  m_LocalPosition: {x: 0, y: 1.296, z: 4.133}
   m_LocalScale: {x: 1.5, y: 1, z: 1.3636408}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1871,6 +1874,7 @@ MonoBehaviour:
   conditionNum: 1
   player: {fileID: 2057563899}
   scoreManager: {fileID: 408609208}
+  hitCounts: 0
 --- !u!65 &1284746051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2320,6 +2324,7 @@ MonoBehaviour:
   conditionNum: 1
   player: {fileID: 2057563899}
   scoreManager: {fileID: 408609208}
+  hitCounts: 0
 --- !u!1 &1564533556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632893148}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2cccbc1d8ab2cf47ba71e1d2b7abc41, type: 3}
   m_Name: 
@@ -2839,8 +2844,8 @@ Transform:
   m_GameObject: {fileID: 1811698923}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.296, z: 2.11}
-  m_LocalScale: {x: 1.5, y: 1, z: 1.222}
+  m_LocalPosition: {x: 0, y: 1.296, z: 2.476}
+  m_LocalScale: {x: 1.5, y: 1, z: 1.9477196}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1989720518}
@@ -2860,6 +2865,7 @@ MonoBehaviour:
   conditionNum: 2
   player: {fileID: 2057563899}
   scoreManager: {fileID: 408609208}
+  hitCounts: 0
 --- !u!1 &1888813999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,9 +3019,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManager: {fileID: 270012104}
+  musicManager: {fileID: 322733658}
   pos:
-  - {x: 1, y: 0, z: 200}
-  - {x: -1, y: 0, z: 200}
+  - {x: 1, y: 0, z: 100}
+  - {x: -1, y: 0, z: 100}
 --- !u!1 &1989720517
 GameObject:
   m_ObjectHideFlags: 0

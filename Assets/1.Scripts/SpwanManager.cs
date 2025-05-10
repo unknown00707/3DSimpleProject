@@ -43,15 +43,17 @@ public class SpwanManager : MonoBehaviour
             
             
             GameObject enemy = poolManager.GetPooledObject(true);
-            EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
 
-            
-            enemyS.OnSetBasicEnemey();
-            enemyS.EnemySetBasic(false);
-            
-            yield return new WaitForSeconds(musicManager.bpm);
-        
-        
+            if(enemy != null)
+            {
+                EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
+
+                
+                enemyS.OnSetBasicEnemey();
+                enemyS.EnemySetBasic(false);
+                
+                yield return new WaitForSeconds(musicManager.bpm/60);
+            }
         }
     }
 }

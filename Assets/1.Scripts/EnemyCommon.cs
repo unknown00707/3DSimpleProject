@@ -21,18 +21,13 @@ public class EnemyCommon : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        if(transform.position.z < -7 && collider.enabled == true)
+        if(transform.position.z < -7)
         {
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
             print("DiePoint");
-            Die();
-            OnSetBasicEnemey();
-        }
-        else if (transform.position.z < -7 && collider.enabled == false)
-        {
             Die();
             OnSetBasicEnemey();
         }

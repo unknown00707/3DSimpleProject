@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da537eecf2bcfdf458bb2006745471cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 50
   spwanManager: {fileID: 0}
   collider: {fileID: 455260407283891417}
   hitCode: 30
