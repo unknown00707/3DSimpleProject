@@ -9,14 +9,7 @@ public class SpwanManager : MonoBehaviour
     
     public PoolManager poolManager;
     public MusicManager musicManager;
-    public Vector3[] pos;
-
-    public Vector3 StartPos()
-    {
-        //초기 위치 설정
-        int ran = Random.Range(0, pos.Length);
-        return pos[ran];
-    }
+    public float[] pos;
 
     void Start()
     {
@@ -25,13 +18,13 @@ public class SpwanManager : MonoBehaviour
 
     IEnumerator Spwan()
     {
-        while(true)
+        while (true)
         {
             // 반복 실행
 
             // yield return new WaitForSeconds(0.5f);
 
-            
+
             //     GameObject enemyBullet = poolManager.GetPooledObject(false);
             //     EnemyBullet enemyBulletS = enemyBullet.GetComponent<EnemyBullet>();
 
@@ -40,20 +33,37 @@ public class SpwanManager : MonoBehaviour
             //     enemyBulletS.OnEnemeyBulletSet();
 
             //     enemyBullet.transform.GetChild(0).gameObject.SetActive(true);
-            
-            
-            GameObject enemy = poolManager.GetPooledObject(true);
+            BeatmapData loadedBeatmap = musicManager.GetLoadedBeatmapData();
+            float waitTimeCul;
 
-            if(enemy != null)
+            foreach (var note in loadedBeatmap.tracks[0].notes)
             {
+                GameObject enemy = poolManager.GetPooledObject(true);
                 EnemyControl enemyS = enemy.GetComponent<EnemyControl>();
 
-                
-                enemyS.OnSetBasicEnemey();
+                if (note.type == "first")
+                {
+                    enemyS.SpwanXValueChange(pos[note.lane - 1]);
+                    enemyS.EnemySetBasic(false);
+                    //print("첫 소환");
+                    continue;
+                }
+
+                int subdivision = (note.subdivision != 0) ? note.subdivision : 1;
+                waitTimeCul =  60f / loadedBeatmap.meta.bpm * note.beat  / subdivision;
+                //print($"분박 : {subdivision}, 비트 : {note.beat}, BPM : {loadedBeatmap.meta.bpm}");
+                //print(waitTimeCul);
+
+                yield return new WaitForSeconds(waitTimeCul);
+
+                //print("넘어왔당");
+
+                enemyS.SpwanXValueChange(pos[note.lane - 1]);
                 enemyS.EnemySetBasic(false);
-                
-                yield return new WaitForSeconds(musicManager.bpm/60);
+
+                //print("소환!");
             }
+            break;       
         }
     }
 }

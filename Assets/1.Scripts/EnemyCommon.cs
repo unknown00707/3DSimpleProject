@@ -11,8 +11,8 @@ public class EnemyCommon : MonoBehaviour
     public int hitCode;
 
     public int damage;
-    
-    Vector3 startPos;
+
+    Vector3 startPos = new Vector3(0, 0, 100);
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class EnemyCommon : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if(transform.position.z < -7)
+        if (transform.position.z < -7)
         {
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
@@ -41,12 +41,14 @@ public class EnemyCommon : MonoBehaviour
     public void OnSetBasicEnemey()
     {
         transform.position = Vector3.zero;
-        if (spwanManager != null)
-        {
-            startPos = spwanManager.StartPos();
-            gameObject.transform.position = startPos;
-        }
-
+        gameObject.transform.position = startPos;
         collider.enabled = true;
+    }
+
+    public void SpwanXValueChange(float xVlaue)
+    {
+        float yValue = transform.position.y;
+        float zValue = transform.position.z;
+        transform.position = new Vector3(xVlaue, yValue, zValue);
     }
 }

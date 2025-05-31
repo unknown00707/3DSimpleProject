@@ -397,7 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a645485556d3d7459b0f8c8bb5341b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 100
   jsonFileName: testJson.json
 --- !u!1 &330585543
 GameObject:
@@ -3021,8 +3020,8 @@ MonoBehaviour:
   poolManager: {fileID: 270012104}
   musicManager: {fileID: 322733658}
   pos:
-  - {x: 1, y: 0, z: 100}
-  - {x: -1, y: 0, z: 100}
+  - 1
+  - -1
 --- !u!1 &1989720517
 GameObject:
   m_ObjectHideFlags: 0

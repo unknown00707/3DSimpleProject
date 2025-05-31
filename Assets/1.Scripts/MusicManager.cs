@@ -4,7 +4,6 @@ using System.IO;
 
 public class MusicManager : MonoBehaviour
 {
-    public int bpm;
     public string jsonFileName = "testJson.json"; // 로드할 JSON 파일 이름
 
     private BeatmapData loadedBeatmap;
@@ -66,7 +65,7 @@ public class MusicManager : MonoBehaviour
             foreach (var note in track.notes)
             {
                 // 노트 정보를 사용하여 오브젝트 스폰 타이밍 및 위치 계산 (추후 작성)
-                Debug.Log($"노트 - 박자: {note.beat}, 분박: {note.subdivision}, 레인: {note.lane}, 타입: {note.type}");
+                Debug.Log($"트랙: {track.trackId}, 노트 - 박자: {note.beat}, 분박: {note.subdivision}, 레인: {note.lane}, 타입: {note.type}");
             }
         }
     }

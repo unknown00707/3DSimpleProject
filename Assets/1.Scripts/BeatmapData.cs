@@ -9,11 +9,4 @@ public class BeatmapData
     public MetaData meta;
     public List<TrackData> tracks;
     public List<EventData> events;
-
-    public BeatmapData()
-    {
-        meta = new MetaData();
-        tracks = new List<TrackData>();
-        events = new List<EventData>();
-    }
 }
