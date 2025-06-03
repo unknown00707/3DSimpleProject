@@ -3,45 +3,14 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    public int conditionNum;
-    public PlayerControl player;
+    public PlayerControl playerControl;
     public ScoreManager scoreManager;
 
-    int hitedCode = 0;
-
-    public int hitCounts;
-
-    void OnTriggerEnter(Collider other)
+    public void ScoreCulFEnemy(int hitCode, int conditionNum)
     {
-        if (other.CompareTag("Enemy") && player.isAttack)
-        {
-            
-            EnemyControl enemy = other.GetComponent<EnemyControl>();
-            enemy.collider.enabled = false;
-
-            hitedCode = enemy.hitCode;
-            scoreManager.ScoreGiven(hitedCode * conditionNum );
-            print("HitPoint" + conditionNum);
-            hitCounts++;
-                
-            enemy.EnemySetBasic(true); 
-        }
-
-        if (other.CompareTag("EnemyBullet") && player.isAttack)
-        {   
-            EnemyBullet enemyBullet = other.GetComponent<EnemyBullet>();
-            enemyBullet.collider.enabled = false;
-
-            hitedCode = enemyBullet.hitCode;
-            scoreManager.ScoreGiven(hitedCode * conditionNum );
-            print("HitPoint" + conditionNum);
-
-
-            if(enemyBullet.isAttacked != true)
-            {
-                enemyBullet.isAttacked = true;
-                enemyBullet.speed *= Random.Range(1f, 1.5f);
-            }
-        }
+        int hitedCode = hitCode;
+        conditionNum = playerControl.isUltimate ? 3 : conditionNum;
+        scoreManager.ScoreGiven(hitedCode * conditionNum);
+        print("HitPoint" + conditionNum);
     }
 }

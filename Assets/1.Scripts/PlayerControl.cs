@@ -132,7 +132,6 @@ public class PlayerControl : MonoBehaviour
                 enemy.EnemySetBasic(true);
 
                 health -= enemy.damage;
-                //scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemy.hitCode);
                 print("PlayerHitPoint");
             }
             
@@ -148,7 +147,6 @@ public class PlayerControl : MonoBehaviour
                 enemyBullet.Die();
 
                 health -= enemyBullet.damage;
-                //scoreManager.gameObject.GetComponent<ScoreManager>().ScoreGiven(enemyBullet.hitCode);
                 print("PlayerHitPoint");
             }
         }
