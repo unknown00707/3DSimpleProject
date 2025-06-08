@@ -19,20 +19,18 @@ public class CastBar : MonoBehaviour
 
     void CulChargingBarSize()
     {
-        if (player.isCharging && player.isAttackHolding)
-        {
-            //gameObject.SetActive(true);     
+        if (player.isCharging && player.reCastingTime <= 0f)
+        { 
             culTime += Time.deltaTime;
         }
-        else if (!player.isCharging)
+        else if (!player.isCharging && !player.isUltimate)
         {
-            //gameObject.SetActive(false); 
             culTime -= Time.deltaTime;
         }    
         
         float culTimeTotal = culTime/0.5f;
         
-        if(culTimeTotal >= 1)
+        if(culTimeTotal >= 1 && player.isUltimate)
         {
             culTime = 0.5f;
             culTimeTotal = 1;
@@ -42,12 +40,13 @@ public class CastBar : MonoBehaviour
             culTime = 0;
             culTimeTotal = 0;
         }
+
         castIMG.transform.localScale = new Vector2(culTimeTotal, 1);
     }
 
     void TimingOfBar()
     {
-        if(player.isSpace)
+        if(player.isSpace && player.reCastingTime <= 0f)
         {
             foreach (GameObject obj in childGameObjs)
             {

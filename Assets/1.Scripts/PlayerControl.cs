@@ -21,9 +21,11 @@ public class PlayerControl : MonoBehaviour
     public bool isAttack;
     public bool isAttackHolding; // 궁극기 조건 
     public bool isUltimate; // 궁극기
-    public bool isCharging;
+    public bool isCharging; // 스페스바 누르는 시간
 
     float arrow;
+
+    public AttackArea attackArea;
 
     void Update()
     {
@@ -61,7 +63,7 @@ public class PlayerControl : MonoBehaviour
         isRightArrow = Input.GetKey(KeyCode.RightArrow);
         isSpace = Input.GetKey(KeyCode.Space);
 
-        isUltimate = isSpace && isAttackHolding;
+        isUltimate = isAttackHolding;
         
         if (reCastingTime > 0f)
             reCastingTime -= Time.deltaTime;
@@ -99,28 +101,26 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.started)
         {
-            isAttack = false;
-            print(isAttack);
+            isAttack = true;
+            attackArea.UptoPlayer();
         }
         else if (context.performed)
         {
-            isAttack = true;
-            print(isAttack);
+            isAttack = false;
         }
         else if (context.canceled)
         {
             isAttack = false;
-            print(isAttack);
         }
     }
 
 
-    public void Ultimate()
+    protected void Ultimate()
     {
         if (isUltimate)
         {
             isAttack = true;
-            //Debug.Log("궁극기 시전!!!");
+            attackArea.UptoPlayer();
         }
     }
 
