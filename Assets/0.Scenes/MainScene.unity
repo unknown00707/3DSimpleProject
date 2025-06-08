@@ -2362,6 +2362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 914926008}
+  - component: {fileID: 914926009}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2384,6 +2385,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914926009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914926007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f546937836524aa0c127861b123b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935594428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,7 +3164,6 @@ GameObject:
   - component: {fileID: 1228463684}
   - component: {fileID: 1228463683}
   - component: {fileID: 1228463682}
-  - component: {fileID: 1228463686}
   m_Layer: 8
   m_Name: Perfect Attack Area
   m_TagString: Untagged
@@ -3248,20 +3260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1989720518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1228463686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228463681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87b9e313494a04e9018123ea716d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2057563899}
-  scoreManager: {fileID: 408609208}
 --- !u!1 &1232582786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,9 +3457,8 @@ GameObject:
   - component: {fileID: 1284746053}
   - component: {fileID: 1284746052}
   - component: {fileID: 1284746051}
-  - component: {fileID: 1284746050}
   m_Layer: 8
-  m_Name: 'Bad Attack Area  '
+  m_Name: Bad Attack Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3482,20 +3479,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1989720518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284746050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284746048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87b9e313494a04e9018123ea716d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2057563899}
-  scoreManager: {fileID: 408609208}
 --- !u!65 &1284746051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3947,9 +3930,8 @@ GameObject:
   - component: {fileID: 1547095466}
   - component: {fileID: 1547095465}
   - component: {fileID: 1547095464}
-  - component: {fileID: 1547095468}
   m_Layer: 8
-  m_Name: 'Bad Attack Area '
+  m_Name: Bad Attack Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4044,20 +4026,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1989720518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1547095468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547095463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87b9e313494a04e9018123ea716d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2057563899}
-  scoreManager: {fileID: 408609208}
 --- !u!1 &1564533556
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,7 +4491,6 @@ GameObject:
   - component: {fileID: 1811698926}
   - component: {fileID: 1811698925}
   - component: {fileID: 1811698924}
-  - component: {fileID: 1811698928}
   m_Layer: 8
   m_Name: 'Good Attack Area '
   m_TagString: Untagged
@@ -4620,20 +4587,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1989720518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1811698928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811698923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87b9e313494a04e9018123ea716d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2057563899}
-  scoreManager: {fileID: 408609208}
 --- !u!1 &1888813999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,7 +4889,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989720518}
-  - component: {fileID: 1989720519}
+  - component: {fileID: 1989720520}
+  - component: {fileID: 1989720521}
   m_Layer: 8
   m_Name: Attack ARea
   m_TagString: Untagged
@@ -4953,17 +4907,38 @@ Transform:
   m_GameObject: {fileID: 1989720517}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.23}
+  m_LocalPosition: {x: 1, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1284746049}
   - {fileID: 1811698927}
   - {fileID: 1228463685}
   - {fileID: 1547095467}
-  - {fileID: 1284746049}
   m_Father: {fileID: 935594429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1989720519
+--- !u!65 &1989720520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989720517}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.65, y: 1, z: 4.38}
+  m_Center: {x: 0, y: 1.3, z: 2.63}
+--- !u!114 &1989720521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4972,13 +4947,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1989720517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1029afd8d33117e4488f32993c1cd6ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a87b9e313494a04e9018123ea716d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2057563899}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  scoreManager: {fileID: 408609208}
+  objs: []
+  transforms:
+  - {fileID: 1284746049}
+  - {fileID: 1811698927}
+  - {fileID: 1228463685}
+  - {fileID: 1547095467}
 --- !u!1 &2055721907
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,6 +5210,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 03c2ba2e-cec9-421e-bb98-fd4625de14df
     m_ActionName: 'New action map/LastAttack[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2057563899}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnNomalAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e26fe49-2919-4757-9e56-588e2195c02b
+    m_ActionName: 'New action map/NomalAttack[/Keyboard/anyKey]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: New action map

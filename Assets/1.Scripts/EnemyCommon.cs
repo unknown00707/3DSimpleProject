@@ -12,8 +12,7 @@ public class EnemyCommon : MonoBehaviour
 
     public int damage;
 
-    bool hited = false;
-    bool playerHiting;
+    public bool hited = false;
 
     Vector3 startPos = new Vector3(0, 0, 100);
 
@@ -38,6 +37,7 @@ public class EnemyCommon : MonoBehaviour
 
     public void Die()
     {
+        gameObject.GetComponent<Collider>().enabled = false;
         switch (gameObject.tag)
         {
             case "Enemy":
@@ -47,8 +47,6 @@ public class EnemyCommon : MonoBehaviour
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 break;
         }
- 
-
     }
 
     public void OnSetBasicEnemey()
@@ -56,6 +54,7 @@ public class EnemyCommon : MonoBehaviour
         transform.position = Vector3.zero;
         gameObject.transform.position = startPos;
         collider.enabled = true;
+        hited = false;
     }
 
     public void SpwanXValueChange(float xVlaue)
@@ -65,31 +64,14 @@ public class EnemyCommon : MonoBehaviour
         transform.position = new Vector3(xVlaue, yValue, zValue);
     }
 
-    public void Hinted(bool playerhit)
+    public void Hinted()
     {
         hited = true;
-        playerHiting = playerhit;
     }
 
-    void OnTriggerEnter(Collider other)
+    public bool HitedR()
     {
-        if (hited && playerHiting)
-        {
-            collider.enabled = false;
-            Die();
-            AttackArea attackArea = other.GetComponent<AttackArea>();
-            switch (other.gameObject.name)
-            {
-                case "Perfect Attack Area ":
-                    attackArea.ScoreCulFEnemy(hitCode, 3);
-                    break;
-                case "Good Attack Area ":
-                    attackArea.ScoreCulFEnemy(hitCode, 2);
-                    break;
-                case "Bad Attack Area ":
-                    attackArea.ScoreCulFEnemy(hitCode, 1);
-                    break;
-            }
-        }
+        return hited;
     }
+
 }

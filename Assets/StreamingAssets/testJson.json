@@ -12,7 +12,7 @@
             "trackId": 0,
             "notes": [
                 { "beat": 1, "subdivision": 0, "lane": 1, "type": "first" },
-                { "beat": 2, "subdivision": 2, "lane": 2, "type": "normal" }
+                { "beat": 2, "subdivision": 2, "lane": 1, "type": "normal" }
             ]
         },
         {

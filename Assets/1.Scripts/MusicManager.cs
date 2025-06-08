@@ -14,13 +14,13 @@ public class MusicManager : MonoBehaviour
 
         if (loadedBeatmap != null)
         {
-            Debug.Log($"곡 제목: {loadedBeatmap.meta.title}, BPM: {loadedBeatmap.meta.bpm}");
+            //Debug.Log($"곡 제목: {loadedBeatmap.meta.title}, BPM: {loadedBeatmap.meta.bpm}");
 
             if (loadedBeatmap.tracks != null)
             {
                 foreach (var track in loadedBeatmap.tracks)
                 {
-                    Debug.Log($"트랙 ID: {track.trackId}, 노트 수: {track.notes.Count}");
+                    //Debug.Log($"트랙 ID: {track.trackId}, 노트 수: {track.notes.Count}");
                     // 추가적인 트랙 정보 처리
                 }
             }
@@ -65,7 +65,7 @@ public class MusicManager : MonoBehaviour
             foreach (var note in track.notes)
             {
                 // 노트 정보를 사용하여 오브젝트 스폰 타이밍 및 위치 계산 (추후 작성)
-                Debug.Log($"트랙: {track.trackId}, 노트 - 박자: {note.beat}, 분박: {note.subdivision}, 레인: {note.lane}, 타입: {note.type}");
+                //Debug.Log($"트랙: {track.trackId}, 노트 - 박자: {note.beat}, 분박: {note.subdivision}, 레인: {note.lane}, 타입: {note.type}");
             }
         }
     }

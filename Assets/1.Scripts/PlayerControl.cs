@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-    Vector3 plusVec = new Vector3 (2, 0, 0);
+    Vector3 plusVec = new Vector3 (1, 0, 0);
 
     public int health;
     protected int moveValue = 1;
@@ -36,17 +36,19 @@ public class PlayerControl : MonoBehaviour
     {
         if(arrow == -1 && !(transform.position.x <= -moveValue))
         {
-            if(isA || isLeftArrow)
+            if (isA || isLeftArrow)
             {
                 gameObject.transform.parent.position += -plusVec;
+                return;
             }   
         }
             
         else if (arrow == 1 && !(transform.position.x >= moveValue))
         {
-            if(isD || isRightArrow)
+            if (isD || isRightArrow)
             {
                 gameObject.transform.parent.position += plusVec;
+                return;
             }
         }
     }
@@ -60,9 +62,6 @@ public class PlayerControl : MonoBehaviour
         isSpace = Input.GetKey(KeyCode.Space);
 
         isUltimate = isSpace && isAttackHolding;
-    
-        if (!isUltimate)
-            isAttack = !isA && !isD && !isLeftArrow && !isRightArrow && !isSpace && Input.anyKey; // 개선 필요 : 움직일 때 공격 불가 ==> 움직여도 공격 o . ad화살표 등 으로 공격이 활성화 x
         
         if (reCastingTime > 0f)
             reCastingTime -= Time.deltaTime;
@@ -96,10 +95,30 @@ public class PlayerControl : MonoBehaviour
         
     }
 
+    public void OnNomalAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttack = false;
+            print(isAttack);
+        }
+        else if (context.performed)
+        {
+            isAttack = true;
+            print(isAttack);
+        }
+        else if (context.canceled)
+        {
+            isAttack = false;
+            print(isAttack);
+        }
+    }
+
+
     public void Ultimate()
     {
         if (isUltimate)
-        {   
+        {
             isAttack = true;
             //Debug.Log("궁극기 시전!!!");
         }
@@ -128,10 +147,10 @@ public class PlayerControl : MonoBehaviour
 
             if(enemy.collider.enabled == true)
             {
-                enemy.collider.enabled = false;
-                enemy.EnemySetBasic(true);
+                enemy.Die();
 
                 health -= enemy.damage;
+                scoreManager.ScoreGiven(enemy.damage * 2); // good = 2
                 print("PlayerHitPoint");
             }
             
@@ -143,10 +162,9 @@ public class PlayerControl : MonoBehaviour
             
             if(enemyBullet.collider.enabled == true)
             {
-                enemyBullet.collider.enabled = false;
                 enemyBullet.Die();
-
                 health -= enemyBullet.damage;
+                scoreManager.ScoreGiven(enemyBullet.damage * 2); // good = 2
                 print("PlayerHitPoint");
             }
         }
