@@ -29,6 +29,8 @@ public class PoolManager : MonoBehaviour
             {
                 GameObject obj = (GameObject)Instantiate(prefab);
                 SpwanManager spwanManager = FindAnyObjectByType<SpwanManager>();
+                
+                //분류 e -> eG / eB -> eBG
                 if(obj.CompareTag("Enemy"))
                 {
                     obj.GetComponent<EnemyControl>().spwanManager = spwanManager;
@@ -39,8 +41,10 @@ public class PoolManager : MonoBehaviour
                     obj.GetComponent<EnemyBullet>().spwanManager = spwanManager;
                     pooledEnemyBullet.Add(obj);
                 }
+
+                // set as children of Spawn Manager
                 obj.transform.GetChild(0).gameObject.SetActive(false);
-                obj.transform.SetParent(spwanManager.gameObject.transform); // set as children of Spawn Manager
+                obj.transform.SetParent(spwanManager.gameObject.transform); 
             }
         }
     }

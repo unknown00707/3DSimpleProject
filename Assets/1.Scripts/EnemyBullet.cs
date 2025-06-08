@@ -14,8 +14,10 @@ public class EnemyBullet : EnemyCommon
         }  
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if(transform.GetChild(0).gameObject.activeInHierarchy && !isAttacked)
             transform.position += speed * Time.deltaTime * Vector3.back;
     }

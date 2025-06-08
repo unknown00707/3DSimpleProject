@@ -11,8 +11,10 @@ public class EnemyCommon : MonoBehaviour
     public int hitCode;
 
     public int damage;
-    
-    Vector3 startPos;
+
+    public bool hited = false;
+
+    Vector3 startPos = new Vector3(0, 0, 100);
 
     void Start()
     {
@@ -21,9 +23,9 @@ public class EnemyCommon : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        if(transform.position.z < -7 && collider.enabled == true)
+        if (transform.position.z < -7)
         {
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.GetComponent<ScoreManager>().ScoreGiven(-hitCode);
@@ -31,27 +33,45 @@ public class EnemyCommon : MonoBehaviour
             Die();
             OnSetBasicEnemey();
         }
-        else if (transform.position.z < -7 && collider.enabled == false)
-        {
-            Die();
-            OnSetBasicEnemey();
-        }
     }
 
     public void Die()
     {
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.GetComponent<Collider>().enabled = false;
+        switch (gameObject.tag)
+        {
+            case "Enemy":
+                gameObject.GetComponent<EnemyControl>().EnemySetBasic(true);
+                break;
+            case "EnemyBullet":
+                gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                break;
+        }
     }
 
     public void OnSetBasicEnemey()
     {
         transform.position = Vector3.zero;
-        if (spwanManager != null)
-        {
-            startPos = spwanManager.StartPos();
-            gameObject.transform.position = startPos;
-        }
-
+        gameObject.transform.position = startPos;
         collider.enabled = true;
+        hited = false;
     }
+
+    public void SpwanXValueChange(float xVlaue)
+    {
+        float yValue = transform.position.y;
+        float zValue = transform.position.z;
+        transform.position = new Vector3(xVlaue, yValue, zValue);
+    }
+
+    public void Hinted()
+    {
+        hited = true;
+    }
+
+    public bool HitedR()
+    {
+        return hited;
+    }
+
 }

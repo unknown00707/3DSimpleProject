@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "NomalAttack",
+                    "type": "Button",
+                    "id": "5e26fe49-2919-4757-9e56-588e2195c02b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -88,6 +97,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LastAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7fb5471-ca87-480a-adf5-01c3a35672a2",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NomalAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
