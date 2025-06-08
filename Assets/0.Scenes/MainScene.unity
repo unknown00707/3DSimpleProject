@@ -670,7 +670,7 @@ MonoBehaviour:
   - {fileID: 1474187113892430599, guid: d6949da2ae94b9f478176942b3aa7300, type: 3}
   - {fileID: 1682470437068595579, guid: 142cb1f8a4515894db0e0270ba9bb8ee, type: 3}
   amountToPool: 50
-  spwanManager: {fileID: 0}
+  spwanManager: {fileID: 1908381895}
 --- !u!1 &274771669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,9 +1108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aecc2b69d972e4da0b901780676d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finialScore: 0
   scoreTxt: {fileID: 891929556}
-  score: 0
+  recastingTxt: {fileID: 1049318380}
+  player: {fileID: 2057563899}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5126,6 +5126,7 @@ MonoBehaviour:
   isAttackHolding: 0
   isUltimate: 0
   isCharging: 0
+  attackArea: {fileID: 1989720521}
 --- !u!54 &2057563900
 Rigidbody:
   m_ObjectHideFlags: 0

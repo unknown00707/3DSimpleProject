@@ -27,9 +27,7 @@ public class PoolManager : MonoBehaviour
         {
             for (int i = 0; i < amountToPool; i++)
             {
-                GameObject obj = (GameObject)Instantiate(prefab);
-                SpwanManager spwanManager = FindAnyObjectByType<SpwanManager>();
-                
+                GameObject obj = (GameObject)Instantiate(prefab);          
                 //분류 e -> eG / eB -> eBG
                 if(obj.CompareTag("Enemy"))
                 {

@@ -3,14 +3,19 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int finialScore;
+    int finialScore;
     public TMP_Text scoreTxt;
+    public TMP_Text recastingTxt;
+    public PlayerControl player;
 
-    public int score;
+    int score;
 
     void LateUpdate()
     {
         if (finialScore <= 0) finialScore = 0;
+
+        scoreTxt.text = "Score : " + finialScore.ToString();
+        recastingTxt.text = "RecastingTime : " + player.reCastingTime.ToString("F1");
     }
 
     public void ScoreGiven(int colScore)
@@ -18,7 +23,5 @@ public class ScoreManager : MonoBehaviour
         score = colScore;
 
         if ((finialScore <= 0) && (score < 0)) finialScore = 0; finialScore += score;
-
-        scoreTxt.text = finialScore.ToString();
     }
 }

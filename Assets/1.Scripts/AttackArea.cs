@@ -21,7 +21,7 @@ public class AttackArea : MonoBehaviour
         print("HitPoint" + conditionNum);
     }
 
-    void Update()
+    public void UptoPlayer()
     {
         if (player.isAttack && (objs.Count >= 1))
         {
@@ -30,7 +30,6 @@ public class AttackArea : MonoBehaviour
     }
     public void Attacking()
     {
-        print("S");
         Collider obj = objs[0];
         objs.RemoveAt(0);
         switch (obj.tag)
@@ -46,9 +45,7 @@ public class AttackArea : MonoBehaviour
                 enemyB.collider.enabled = false;
                 break;
         }
-        print("SA");
         CulTrans(obj.transform);
-        print("SAAAAA");
     }
 
     void CulTrans(Transform enemyT)
@@ -78,7 +75,6 @@ public class AttackArea : MonoBehaviour
         {
             ScoreCulFEnemy(comditonNum, 1);
         }
-        print("SAA");
     }
 
     void OnTriggerEnter(Collider other)
